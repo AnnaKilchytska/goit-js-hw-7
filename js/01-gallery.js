@@ -29,9 +29,11 @@ function onGalleryClick(evt) {
     evt.preventDefault();
     console.dir(evt.target.dataset.source);
 
-    const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="800" height="600">
-    `, { closable: true, onShow: (instance) => console.log(instance) })
-
-    instance.show()
+     if (evt.target.tagName === "IMG") {
+      const instance = basicLightbox.create(`
+      <img src="${evt.target.dataset.source}" width="800" height="600">
+      `, { closable: true, onShow: (instance) => console.log(instance) })
+  
+      instance.show()
+    }
 }
